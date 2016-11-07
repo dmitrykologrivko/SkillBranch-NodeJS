@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dmitrykologrivko/SkillBranch-NodeJS.git"
+    "url": "git+https://github.com/dmitrykologrivko/skillbranch-nodejs.git"
   },
   "author": "Dmitry Kologrivko",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dmitrykologrivko/SkillBranch-NodeJS/issues"
   },
-  "homepage": "https://github.com/dmitrykologrivko/SkillBranch-NodeJS#readme",
+  "homepage": "https://github.com/dmitrykologrivko/skillbranch-nodejs#readme",
   "dependencies": {
     "cors": "^2.8.1",
     "express": "^4.14.0"

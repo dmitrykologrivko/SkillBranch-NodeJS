@@ -1,0 +1,29 @@
+{
+  "name": "skillbranch-nodejs",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist",
+    "2A": "npm run build && node dist/lesson-2/2A.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmitrykologrivko/SkillBranch-NodeJS.git"
+  },
+  "author": "Dmitry Kologrivko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmitrykologrivko/SkillBranch-NodeJS/issues"
+  },
+  "homepage": "https://github.com/dmitrykologrivko/SkillBranch-NodeJS#readme",
+  "dependencies": {
+    "cors": "^2.8.1",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-preset-latest": "^6.16.0"
+  }
+}

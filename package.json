@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d dist",
-    "2A": "npm run build && node dist/lesson-2/2A.js"
+    "2A": "npm run build && node dist/lesson-2/2A.js",
+    "2B": "npm run build && node dist/lesson-2/2B.js"
   },
   "repository": {
     "type": "git",

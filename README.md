@@ -6,6 +6,7 @@ Repository for the tasks solution on an intensive course Node JS (by Skill Branc
 ### Tasks
 
  - Lesson 2: 2A, 2B, 2C
+ - Lesson 3: 3A
 
 #### Installation
 

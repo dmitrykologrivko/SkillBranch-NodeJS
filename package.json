@@ -7,7 +7,8 @@
     "build": "babel src -d dist",
     "2A": "npm run build && node dist/lesson-2/2A.js",
     "2B": "npm run build && node dist/lesson-2/2B.js",
-    "2C": "npm run build && node dist/lesson-2/2C.js"
+    "2C": "npm run build && node dist/lesson-2/2C.js",
+    "3A": "babel-node src/lesson-3/3A"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,8 @@
   "homepage": "https://github.com/dmitrykologrivko/skillbranch-nodejs#readme",
   "dependencies": {
     "cors": "^2.8.1",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "node-fetch": "^1.6.3"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

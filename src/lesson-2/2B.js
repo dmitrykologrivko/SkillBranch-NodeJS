@@ -54,7 +54,7 @@ app.get('/', (req, res) => {
         return;
     }
 
-    // Trim filename and convert to lowercase
+    // Trim fullname and convert to lowercase
     fullname = fullname.trim().toLowerCase();
     // Split fullname to array by space
     const fullnameArr = fullname.match(/\S+/g);

@@ -26,7 +26,7 @@ app.use(cors());
 app.get('/volumes', (req, res) => {
     let sizes = new Map();
     // Check property HDD
-    if (!Object.keys(pc).indexOf('hdd') === -1) {
+    if (!pc.hdd) {
         res.status(404);
         return res.send('Not Found');
     }

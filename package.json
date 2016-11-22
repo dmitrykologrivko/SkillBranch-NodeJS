@@ -8,6 +8,7 @@
     "2A": "npm run build && node dist/lesson-2/2A.js",
     "2B": "npm run build && node dist/lesson-2/2B.js",
     "2C": "npm run build && node dist/lesson-2/2C.js",
+    "2D": "npm run build && node dist/lesson-2/2D.js",
     "3A": "npm run build && node dist/lesson-3/3A.js"
   },
   "repository": {

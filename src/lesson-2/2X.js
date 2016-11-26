@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import bigNumber from 'big-number'
 
-const PORT = 80;
+const PORT = 3000;
 
 const app = express();
 

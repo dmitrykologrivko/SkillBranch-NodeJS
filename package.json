@@ -11,7 +11,8 @@
     "2D": "npm run build && node dist/2D/2D.js",
     "2X": "npm run build && node dist/2X/2X.js",
     "3A": "npm run build && node dist/3A/3A.js",
-    "3B": "npm run build && node dist/3B/3B.js"
+    "3B": "npm run build && node dist/3B/3B.js",
+    "3C": "npm run build && node dist/3C/3C.js"
   },
   "repository": {
     "type": "git",

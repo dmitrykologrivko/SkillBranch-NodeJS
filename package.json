@@ -5,12 +5,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d dist",
-    "2A": "npm run build && node dist/2A.js",
-    "2B": "npm run build && node dist/2B.js",
-    "2C": "npm run build && node dist/2C.js",
-    "2D": "npm run build && node dist/2D.js",
-    "2X": "npm run build && node dist/2X.js",
-    "3A": "npm run build && node dist/3A.js",
+    "2A": "npm run build && node dist/2A/2A.js",
+    "2B": "npm run build && node dist/2B/2B.js",
+    "2C": "npm run build && node dist/2C/2C.js",
+    "2D": "npm run build && node dist/2D/2D.js",
+    "2X": "npm run build && node dist/2X/2X.js",
+    "3A": "npm run build && node dist/3A/3A.js",
     "3B": "npm run build && node dist/3B/3B.js"
   },
   "repository": {

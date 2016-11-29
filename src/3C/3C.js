@@ -6,15 +6,6 @@ const PORT = 3000;
 // Load pokemons from JSON file
 const pokemons = require('./pokemons.json');
 
-const TAGS = [
-    'fat',
-    'angular',
-    'heavy',
-    'light',
-    'huge',
-    'micro'
-];
-
 function sortByTag(tag = 'name') {
     function nameComparator(a, b) {
         return a.name < b.name ? -1 : a.name > b.name ? 1 : 0

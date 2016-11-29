@@ -6,37 +6,63 @@ const PORT = 3000;
 // Load pokemons from JSON file
 const pokemons = require('./pokemons.json');
 
-// fat - max(pokemon.weight / pokemon.height)
-// angular - min(pokemon.weight / pokemon.height)
-// heavy - max(pokemon.weight)
-// light - min(pokemon.weight)
-// huge - max(pokemon.height)
-// micro - min(pokemon.height)
-pokemons.forEach(p => {
-    p.fat = -p.weight / +p.height;
-    p.angular = +p.weight / +p.height;
-    p.heavy = -p.weight;
-    p.light = +p.weight;
-    p.huge = -p.height;
-    p.micro = +p.height;
-});
+const TAGS = [
+    'fat',
+    'angular',
+    'heavy',
+    'light',
+    'huge',
+    'micro'
+];
 
 function sortByTag(tag) {
     function nameComparator(a, b) {
         return a.name < b.name ? -1 : a.name > b.name ? 1 : 0
     }
 
-    function tagComparator(a, b) {
-        return a[tag] < b[tag] ? -1 : a[tag] > b[tag] ? 1 : a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+    // fat - max(pokemon.weight / pokemon.height)
+    function fatComparator(a, b) {
+        if (a.height === 0 || b.height === 0) return;
+        return a.weight / a.height < b.weight / b.height ? 1 : a.weight / a.height > b.weight / b.height ? -1
+            : a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+    }
+
+    // angular - min(pokemon.weight / pokemon.height)
+    function angularComparator(a, b) {
+        if (a.height === 0 || b.height === 0) return;
+        return a.weight / a.height < b.weight / b.height ? -1 : a.weight / a.height > b.weight / b.height ? 1
+            : a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+    }
+
+    // heavy - max(pokemon.weight)
+    function heavyComparator(a, b) {
+        return a.weight < b.weight ? 1 : a.weight > b.weight ? -1 : a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+    }
+
+    // light - min(pokemon.weight)
+    function lightComparator(a, b) {
+        return a.weight < b.weight ? -1 : a.weight > b.weight ? 1 : a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+    }
+
+    // huge - max(pokemon.height)
+    function hugeComparator(a, b) {
+        return a.height < b.height ? 1 : a.height > b.height ? -1 : a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+    }
+
+    // micro - min(pokemon.height)
+    function microComparator(a, b) {
+        return a.height < b.height ? -1 : a.height > b.height ? 1 : a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
     }
 
     if (!tag) return;
 
-    if (tag === 'name') {
-        pokemons.sort(nameComparator);
-    } else {
-        pokemons.sort(tagComparator);
-    }
+    if (tag === 'name') pokemons.sort(nameComparator);
+    if (tag === 'fat') pokemons.sort(fatComparator);
+    if (tag === 'angular') pokemons.sort(angularComparator);
+    if (tag === 'heavy') pokemons.sort(heavyComparator);
+    if (tag === 'light') pokemons.sort(lightComparator);
+    if (tag === 'huge') pokemons.sort(hugeComparator);
+    if (tag === 'micro') pokemons.sort(microComparator);
 }
 
 function getOffset(limit, offset) {
@@ -64,21 +90,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:type', (req, res) => {
-    const TAGS = [
-        'fat',
-        'angular',
-        'heavy',
-        'light',
-        'huge',
-        'micro'
-    ];
-
     if (req.params && req.params.type && TAGS.includes(req.params.type)) {
         sortByTag(req.params.type);
     } else {
         sortByTag('name');
     }
-
     res.json(getOffset(+req.limit, +req.offset));
 });
 

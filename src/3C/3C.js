@@ -12,8 +12,6 @@ const pokemons = require('./pokemons.json');
 // light - min(pokemon.weight)
 // huge - max(pokemon.height)
 // micro - min(pokemon.height)
-// MAX parameter will be a negative number, and tend to zero when we will be sort
-// MIN parameter will be without changes, and tend to zero when we will be sort
 pokemons.forEach(p => {
     p.fat = -p.weight / +p.height;
     p.angular = +p.weight / +p.height;

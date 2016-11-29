@@ -15,7 +15,7 @@ const TAGS = [
     'micro'
 ];
 
-function sortByTag(tag) {
+function sortByTag(tag = 'name') {
     function nameComparator(a, b) {
         return a.name < b.name ? -1 : a.name > b.name ? 1 : 0
     }
@@ -54,8 +54,6 @@ function sortByTag(tag) {
         return a.height < b.height ? -1 : a.height > b.height ? 1 : a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
     }
 
-    if (!tag) return;
-
     if (tag === 'name') pokemons.sort(nameComparator);
     if (tag === 'fat') pokemons.sort(fatComparator);
     if (tag === 'angular') pokemons.sort(angularComparator);
@@ -84,17 +82,8 @@ app.use((req, res, next) => {
 });
 
 // Setup routes
-app.get('/', (req, res) => {
-    sortByTag('name');
-    res.json(getOffset(+req.limit, +req.offset));
-});
-
-app.get('/:type', (req, res) => {
-    if (req.params && req.params.type && TAGS.includes(req.params.type)) {
-        sortByTag(req.params.type);
-    } else {
-        sortByTag('name');
-    }
+app.get('/?(:type)?', (req, res) => {
+    sortByTag(req.params.type);
     res.json(getOffset(+req.limit, +req.offset));
 });
 

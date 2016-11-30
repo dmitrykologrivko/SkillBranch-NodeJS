@@ -6,15 +6,8 @@ export async function getAllUsers(req, res, next) {
     try {
         if (Object.values(req.params).includes('populate')) {
             if (req.query.havePet) {
-                let users = await User.find({}).populate({path: 'pets', match: {type: req.query.havePet}});
-                // Filter only for users which have this type of pet
-                users = users.filter(user => {
-                    if (user.pets.length > 0) return user;
-                });
-                const ids = users.map(user => {
-                    return user.id
-                });
-                users = await User.find({id: {$in: ids}}).populate('pets');
+                const pets = await Pet.find({type: req.query.havePet}).select('_id');
+                const users = await User.find({pets: {$in: pets}}).populate('pets');
                 return res.json(serializer.serializeUsersPopulate(users));
             } else {
                 const users = await User.find({}).populate('pets');
@@ -22,11 +15,8 @@ export async function getAllUsers(req, res, next) {
             }
         }
         if (req.query.havePet) {
-            let users = await User.find({}).populate({path: 'pets', match: {type: req.query.havePet}});
-            // Filter only for users which have this type of pet
-            users = users.filter(user => {
-                if (user.pets.length > 0) return user;
-            });
+            const pets = await Pet.find({type: req.query.havePet}).select('_id');
+            const users = await User.find({pets: {$in: pets}});
             return res.json(serializer.serializeUsers(users));
         }
         const users = await User.find({});

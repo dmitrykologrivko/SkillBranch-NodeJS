@@ -1,7 +1,7 @@
 # skillbranch-intensive-node.js
 http://skill-branch.ru/backend
 
-Repository for the tasks solution on an intensive course Node JS (by Skill Branch)
+Repository for the tasks solution on an intensive course Node JS
 
 November 2016
 
